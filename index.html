@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>JavaScript30</title>
+  </head>
+  <body>
+    <div class="container ml-10 mt-5">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="card m-3 ">
+                    <div data-key="65" class="card-body font-weight-bold text-center bg">
+                        A
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card m-3">
+                    <div data-key="83" class="card-body font-weight-bold text-center">
+                        S
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card m-3">
+                    <div data-key="68" class="card-body font-weight-bold text-center">
+                        D
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card m-3">
+                    <div data-key="70" class="card-body font-weight-bold text-center">
+                        F
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card m-3">
+                    <div data-key="71" class="card-body font-weight-bold text-center">
+                        G
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card m-3">
+                    <div data-key="72" class="card-body font-weight-bold text-center">
+                        H
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="">
+        <audio data-key="65" src="sounds/a.wav"></audio>
+        <audio data-key="83" src="sounds/s.wav"></audio>
+        <audio data-key="68" src="sounds/d.WAV"></audio>
+        <audio data-key="70" src="sounds/f.wav"></audio>
+        <audio data-key="71" src="sounds/g.wav"></audio>
+        <audio data-key="72" src="sounds/h.wav"></audio>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script>
+        window.addEventListener('keydown', function (e) {
+            let key = e.keyCode;
+
+            let selectElement = document.querySelector(`audio[data-key="${key}"]`);
+            if(!selectElement) return;
+            selectElement.currentTime = 0;
+            selectElement.play();
+            
+            let selectDivElement = document.querySelector(`div[data-key="${key}"]`);
+            if(!selectDivElement) return;
+            selectDivElement.classList.add('bg-warning');
+
+            let selectAll = document.querySelectorAll('.card-body');
+            
+            selectAll.forEach(function(params){
+                if(params.dataset.key == key){
+                    params.classList.add('bg-warning');
+                }else{
+                    params.classList.remove('bg-warning');
+                }
+            });
+            
+        });
+    </script>
+  </body>
+</html>
